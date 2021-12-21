@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Display</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .product-item {
+            float: left;
+            width: 250px;
+            height: 250px;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .product-item img {
+            margin: 6px;
+            width: 244px;
+            transition: all 300ms;
+            -webkit-transition: all 300ms;
+            -webkit-user-drag: none;
+        }
+
+        .product-item:hover img {
+            margin: 12px;
+            width: 232px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ナビゲーションバー -->
+    <div class="navigation-bar clearfix">
+        <div class="navigation-button">
+            <a href="index_vue.html">Vue.js</a>
+        </div>
+        <div class="navigation-button">
+            <a href="index_react.html" style="font-weight: bold;">React</a>
+        </div>
+    </div>
+
+    <!-- 製品展示ボックス -->
+    <div id="display-box" class="centered-universal clearfix"></div>
+
+    <!-- Reactで実現 -->
+    <script type="text/babel">
+        // 製品情報
+        var productInfos = {
+            productInfo1: { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+            productInfo2: { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+            productInfo3: { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+            productInfo4: { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+            productInfo5: { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+            productInfo6: { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+            productInfo7: { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+            productInfo8: { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+            productInfo9: { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' }
+        }
+        var arr = Object.keys(productInfos);
+
+        // 各製品を展示するためのコンポーネント
+        class DisplayItem extends React.Component {
+            constructor(props) {
+                super(props);
+            }
+
+            render() {
+                return (
+                    <div id={this.props.productId} className="product-item" onClick={() => window.location.href = this.props.productUrl}>
+                        <img src={this.props.imgSrc} alt="" />
+                    </div>
+                );
+            }
+        }
+
+        // すべての製品の容器
+        class DisplayBox extends React.Component {
+            constructor(props) {
+                super(props);
+            }
+
+            render() {
+                // 製品の数によって<DisplayItem>を生成
+                var list = (length) => {
+                    var res = [];
+                    for (var i = 0; i < length; i++) {
+                        res.push(<DisplayItem productId={"item" + (i + 1)} productUrl={productInfos['productInfo' + (i + 1)]['productUrl']} imgSrc={productInfos['productInfo' + (i + 1)]['imgSrc']} imgAlt={productInfos['productInfo' + (i + 1)]['imgAlt']} />)
+                    }
+                    return res
+                }
+                return (
+                    <div>
+                        {list(this.props.length)}
+                    </div>
+                );
+            }
+        }
+
+        // ページに表示、lengthは製品の数
+        ReactDOM.render(
+            <DisplayBox length={arr.length} />,
+            document.getElementById('display-box')
+        );
+    </script>
+
+    <div class="copyright-information">
+        <div>©2021 Karasukaigan</div>
+    </div>
+</body>
+
+</html>

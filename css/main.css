@@ -1,0 +1,52 @@
+body
+{
+    background-color: #fafafa;
+}
+
+/* Navigation Bar */
+.navigation-bar
+{
+    background-color: #fff;
+    border-style:solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #dcdcdc;
+
+}
+.navigation-button
+{
+    font-size: 18px;
+    padding: 10px;
+    float: right;
+    margin-right: 10px;
+    user-select: none;
+}
+.navigation-button a
+{
+    text-decoration: none;
+    color: #000;
+}
+
+/* Centered */
+.centered-universal
+{
+    width: 754px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+/* Copyright Information */
+.copyright-information
+{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #fafafa;
+}
+.copyright-information div
+{
+    font-size: 14px;
+    text-align: center;
+    margin: 5px;
+}

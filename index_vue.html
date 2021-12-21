@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Display</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <style>
+        .product-item {
+            float: left;
+            width: 250px;
+            height: 250px;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .product-item img {
+            margin: 6px;
+            width: 244px;
+            transition: all 300ms;
+            -webkit-transition: all 300ms;
+            -webkit-user-drag: none;
+        }
+
+        .product-item:hover img {
+            margin: 12px;
+            width: 232px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ナビゲーションバー -->
+    <div class="navigation-bar clearfix">
+        <div class="navigation-button">
+            <a href="index_vue.html" style="font-weight: bold;">Vue.js</a>
+        </div>
+        <div class="navigation-button">
+            <a href="index_react.html">React</a>
+        </div>
+    </div>
+
+    <!-- 製品展示ボックス -->
+    <div id="display-box" class="centered-universal clearfix">
+        <div v-for="(productInfo, index) in productInfos" :id="itmeId+(index+1)" class="product-item"
+            @click="jump(event, index)">
+            <img :src="productInfo.imgSrc" :alt="productInfo.imgAlt" />
+        </div>
+    </div>
+
+    <!-- Vue.jsで実現 -->
+    <script>
+        var productItem = new Vue({
+            el: '#display-box',
+            data: {
+                // 製品情報
+                productInfos: [
+                    { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+                    { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+                    { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+                    { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+                    { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+                    { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+                    { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+                    { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
+                    { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' }
+                ],
+                itmeId: 'item'
+            },
+            methods: {
+                // 製品のページに飛ぶ
+                jump: function (event, index) {
+                    window.location.href = this.productInfos[index].productUrl
+                }
+            }
+        })
+    </script>
+
+    <div class="copyright-information">
+        <div>©2021 Karasukaigan</div>
+    </div>
+</body>
+
+</html>
