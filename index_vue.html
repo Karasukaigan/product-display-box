@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    
+    <!-- 图片展示框样式 -->
     <style>
         .product-item {
             float: left;
@@ -32,7 +34,7 @@
 </head>
 
 <body>
-    <!-- ナビゲーションバー -->
+    <!-- 导航栏 -->
     <div class="navigation-bar clearfix">
         <div class="navigation-button">
             <a href="index_vue.html" style="font-weight: bold;">Vue.js</a>
@@ -42,7 +44,7 @@
         </div>
     </div>
 
-    <!-- 製品展示ボックス -->
+    <!-- 产品图片展示框 -->
     <div id="display-box" class="centered-universal clearfix">
         <div v-for="(productInfo, index) in productInfos" :id="itmeId+(index+1)" class="product-item"
             @click="jump(event, index)">
@@ -50,12 +52,12 @@
         </div>
     </div>
 
-    <!-- Vue.jsで実現 -->
+    <!-- 使用Vue.js实现 -->
     <script>
         var productItem = new Vue({
             el: '#display-box',
             data: {
-                // 製品情報
+                // 产品信息
                 productInfos: [
                     { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
                     { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
@@ -70,7 +72,7 @@
                 itmeId: 'item'
             },
             methods: {
-                // 製品のページに飛ぶ
+                // 事件处理，跳转到产品页面
                 jump: function (event, index) {
                     window.location.href = this.productInfos[index].productUrl
                 }
@@ -78,6 +80,7 @@
         })
     </script>
 
+    <!-- 版权信息 -->
     <div class="copyright-information">
         <div>©2021 Karasukaigan</div>
     </div>

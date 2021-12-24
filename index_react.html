@@ -9,6 +9,8 @@
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- 图片展示框样式 -->
     <style>
         .product-item {
             float: left;
@@ -34,7 +36,7 @@
 </head>
 
 <body>
-    <!-- ナビゲーションバー -->
+    <!-- 导航栏 -->
     <div class="navigation-bar clearfix">
         <div class="navigation-button">
             <a href="index_vue.html">Vue.js</a>
@@ -44,12 +46,12 @@
         </div>
     </div>
 
-    <!-- 製品展示ボックス -->
+    <!-- 产品图片展示框 -->
     <div id="display-box" class="centered-universal clearfix"></div>
 
-    <!-- Reactで実現 -->
+    <!-- 使用React实现 -->
     <script type="text/babel">
-        // 製品情報
+        // 产品信息
         var productInfos = {
             productInfo1: { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
             productInfo2: { productUrl: 'https://github.com/Karasukaigan', imgSrc: 'img/square.webp', imgAlt: '' },
@@ -63,7 +65,7 @@
         }
         var arr = Object.keys(productInfos);
 
-        // 各製品を展示するためのコンポーネント
+        // 展示框组件
         class DisplayItem extends React.Component {
             constructor(props) {
                 super(props);
@@ -78,14 +80,14 @@
             }
         }
 
-        // すべての製品の容器
+        // 展示框容器组件
         class DisplayBox extends React.Component {
             constructor(props) {
                 super(props);
             }
 
             render() {
-                // 製品の数によって<DisplayItem>を生成
+                // 根据产品数量生成<DisplayItem>组件
                 var list = (length) => {
                     var res = [];
                     for (var i = 0; i < length; i++) {
@@ -101,13 +103,14 @@
             }
         }
 
-        // ページに表示、lengthは製品の数
+        // 渲染到页面
         ReactDOM.render(
             <DisplayBox length={arr.length} />,
             document.getElementById('display-box')
         );
     </script>
 
+    <!-- 版权信息 -->
     <div class="copyright-information">
         <div>©2021 Karasukaigan</div>
     </div>
